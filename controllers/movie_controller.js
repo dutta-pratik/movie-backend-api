@@ -117,3 +117,20 @@ module.exports.deleteMovie = async function(req, res){
         });
     }
 }
+
+module.exports.moviebyGenre = async function(res, req){
+    try{
+        let movieGenreID = req.params.id;
+        let movieList = await Movie.find({genre: movieGenreID});
+        if(movieList){
+            return res.status(200).json({
+                data: movieList,
+                message: "List of Genre specifi Movie"
+            });
+        }
+    }catch(err){
+        return res.status(500).json({
+            message: "Server Error"
+        });
+    }
+}
