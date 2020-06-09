@@ -94,3 +94,26 @@ module.exports.updateDetails = async function(req, res){
         });
     }
 }
+
+module.exports.deleteMovie = async function(req, res){
+    try{
+        let movieID = req.params.id;
+        let movie = await Movie.findOne({_id: movieID});
+        if(movie){
+            await Movie.findByIdAndDelete({_id: movieID});
+            return res.status(200).json({
+                data: movie,
+                message: "Movie Deleted Successfully"
+            });
+        }else{
+            return res.status(404).json({
+                message: "Movie Not Found"
+            });
+        }
+    }catch(err){
+        console.log("delete", err);
+        return res.status(500).json({
+            message: "Server Error"
+        });
+    }
+}
