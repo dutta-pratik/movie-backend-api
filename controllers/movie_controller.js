@@ -1,5 +1,9 @@
+/***************IMPORTING MODELS*****************************/
+
 const Movie = require("../models/movieSchema");
 const Genre = require("../models/genreSchema");
+
+/***************MAKING CONTROLLER FOR allList*****************************/
 
 module.exports.allList = async function(req, res){
     try{
@@ -25,6 +29,8 @@ module.exports.allList = async function(req, res){
     }
 }
 
+/***************MAKING CONTROLLER FOR movieDetails*****************************/
+
 module.exports.movieDetails = async function(req, res){
     try{
         let movieID = await req.params.id;
@@ -47,6 +53,8 @@ module.exports.movieDetails = async function(req, res){
     }
 }
 
+/***************MAKING CONTROLLER FOR addMovie*****************************/
+
 module.exports.addMovie = async function(req, res){
     try{
         let movie = await Movie.create(req.body);
@@ -67,6 +75,8 @@ module.exports.addMovie = async function(req, res){
         });
     }
 }
+
+/***************MAKING CONTROLLER FOR updateDetails*****************************/
 
 module.exports.updateDetails = async function(req, res){
     try{
@@ -95,6 +105,8 @@ module.exports.updateDetails = async function(req, res){
     }
 }
 
+/***************MAKING CONTROLLER FOR deleteMovie*****************************/
+
 module.exports.deleteMovie = async function(req, res){
     try{
         let movieID = req.params.id;
@@ -117,6 +129,8 @@ module.exports.deleteMovie = async function(req, res){
         });
     }
 }
+
+/***************MAKING CONTROLLER FOR MovieByGenre*****************************/
 
 module.exports.moviebyGenre = async function(res, req){
     try{

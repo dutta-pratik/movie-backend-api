@@ -1,4 +1,8 @@
+/***************IMPORTING MODELS*****************************/
+
 const Genre = require("../models/genreSchema");
+
+/***************MAKING CONTROLLER FOR addGenre*****************************/
 
 module.exports.addGenre = async function(req, res){
     try{
@@ -23,6 +27,8 @@ module.exports.addGenre = async function(req, res){
     }
 }
 
+/***************MAKING CONTROLLER FOR deleteGenre*****************************/
+
 module.exports.deleteGenre = async function(req, res){
     try{
         let genreID = req.params.id;
@@ -43,6 +49,8 @@ module.exports.deleteGenre = async function(req, res){
         });
     }
 }
+
+/***************MAKING CONTROLLER FOR updateGenre*****************************/
 
 module.exports.updateGenre = async function(req, res){
     try{
