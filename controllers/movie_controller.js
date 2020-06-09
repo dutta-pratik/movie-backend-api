@@ -1,9 +1,9 @@
 const Movie = require("../models/movieSchema");
-
+const Genre = require("../models/genreSchema");
 
 module.exports.allList = async function(req, res){
     try{
-        let allMovie = await Movie.find({});
+        let allMovie = await Movie.find({}).populate("genre");
         if(allMovie){
             //show list
             return res.status(200).json({
@@ -28,7 +28,7 @@ module.exports.allList = async function(req, res){
 module.exports.movieDetails = async function(req, res){
     try{
         let movieID = await req.params.id;
-        let movie = await Movie.findOne({_id: movieID});
+        let movie = await Movie.findOne({_id: movieID}).populate("genre");
         if(movie){
             return res.status(200).json({
                 data: movie,
